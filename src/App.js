@@ -1,18 +1,31 @@
 import './App.css';
 import GameBoard from './GameBoard.jsx';
 
+const headerBarContainerStyle = {
+  display: 'flex',
+  justifyContent: 'space-around'
+}
+
+const gameboardContainerStyle = {
+  display: 'flex',
+  justifyContent: 'space-around',
+}
 
 const App = () => {
   return (
     <div className="App">
-      <div className="HeaderBar">
+      <div
+        className="headerBarContainer"
+        style={headerBarContainerStyle}>
         <h1>
           Accidental.ly
         </h1>
       </div>
-      <div className="grandstaffContainer">
+      {/* <div
+        className="gameboardContainer"
+        style={gameboardContainerStyle}> */}
         <GameBoard />
-      </div>
+      {/* </div> */}
     </div>
   );
 }
