@@ -5,12 +5,21 @@ const downstemStyle = {
   height: '150px'
 }
 
-const DownStemNote = () => {
+const downstemStyleHidden = {
+  height: '150px',
+  opacity: '0'
+}
+
+
+const DownStemNote = (props) => {
+
+const downstemIsSelected = (props.currentNote === props.note) ? downstemStyle : downstemStyleHidden
+
   return (
     <span
       className="downstemContainer">
       <img
-        style={downstemStyle}
+        style={downstemIsSelected}
         src={downstem}>
       </img>
     </span>

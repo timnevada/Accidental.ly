@@ -11,12 +11,12 @@ const grandStaffStyle = {
   justifyContent: 'center'
 }
 
-const GrandStaff = () => {
+const GrandStaff = (props) => {
   return (
     <div
       className="grandStaff"
       style={grandStaffStyle}>
-      <NoteColumn />
+      <NoteColumn currentNote={props.currentNote}/>
     </div>
   )
 }

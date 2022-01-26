@@ -23,157 +23,135 @@ const G5ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '3px',
-  opacity: '0'
 }
 
 const F5ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '1px',
-  opacity: '1'
 }
 
 const E5ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '9px',
-  opacity: '0'
 }
 
 const D5ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '18px',
-  opacity: '1'
 }
 
 const C5ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '24px',
-  opacity: '0'
 }
 
 const B4ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '30px',
-  opacity: '1'
 }
 
 const A4ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '40px',
-  opacity: '0'
 }
 
 const G4ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '33px',
-  opacity: '1'
 }
 
 const F4ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '26px',
-  opacity: '0'
 }
 
 const E4ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '19px',
-  opacity: '1'
 }
 
 const D4ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '10px',
-  opacity: '0'
 }
 
 const B3ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '15px',
-  opacity: '1'
 }
 
 const A3ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '9px',
-  opacity: '0'
 }
 
 const G3ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '2px',
-  opacity: '1'
 }
 
 const F3ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '7px',
-  opacity: '0'
 }
 
 const E3ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '13px',
-  opacity: '1'
 }
 
 const D3ContainerStyle = {
   height: '10px',
   position: 'relative',
   top: '19px',
-  opacity: '0'
 }
 
 const C3ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '52px',
-  opacity: '1'
 }
 
 const B2ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '45px',
-  opacity: '0'
 }
 
 const A2ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '38px',
-  opacity: '1'
 }
 
 const G2ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '29px',
-  opacity: '0'
 }
 
 const F2ContainerStyle = {
   height: '10px',
   position: 'relative',
   bottom: '23px',
-  opacity: '1'
 }
 
-const NoteColumn = () => {
+const NoteColumn = (props) => {
   return (
     <div
       className="noteColumnContainer"
@@ -182,35 +160,35 @@ const NoteColumn = () => {
       <div
         className="trebleClefContainer"
         style={trebleClefContainerStyle}>
-        <div style={G5ContainerStyle}><DownStemNote /></div>
-        <div style={F5ContainerStyle}><DownStemNote /></div>
-        <div style={E5ContainerStyle}><DownStemNote /></div>
-        <div style={D5ContainerStyle}><DownStemNote /></div>
-        <div style={C5ContainerStyle}><DownStemNote /></div>
-        <div style={B4ContainerStyle}><DownStemNote /></div>
+        <div style={G5ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'G5'}/></div>
+        <div style={F5ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'F5'}/></div>
+        <div style={E5ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'E5'}/></div>
+        <div style={D5ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'D5'}/></div>
+        <div style={C5ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'C5'}/></div>
+        <div style={B4ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'B4'}/></div>
 
-        <div style={A4ContainerStyle}><UpStemNote /></div>
-        <div style={G4ContainerStyle}><UpStemNote /></div>
-        <div style={F4ContainerStyle}><UpStemNote /></div>
-        <div style={E4ContainerStyle}><UpStemNote /></div>
-        <div style={D4ContainerStyle}><UpStemNote /></div>
+        <div style={A4ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'A4'}/></div>
+        <div style={G4ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'G4'}/></div>
+        <div style={F4ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'F4'}/></div>
+        <div style={E4ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'E4'}/></div>
+        <div style={D4ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'D4'}/></div>
       </div>
 
       <div
         className="bassClefContainer"
         style={bassClefContainerStyle}>
-        <div style={B3ContainerStyle}><DownStemNote /></div>
-        <div style={A3ContainerStyle}><DownStemNote /></div>
-        <div style={G3ContainerStyle}><DownStemNote /></div>
-        <div style={F3ContainerStyle}><DownStemNote /></div>
-        <div style={E3ContainerStyle}><DownStemNote /></div>
-        <div style={D3ContainerStyle}><DownStemNote /></div>
+        <div style={B3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'B3'}/></div>
+        <div style={A3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'A3'}/></div>
+        <div style={G3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'G3'}/></div>
+        <div style={F3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'F3'}/></div>
+        <div style={E3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'E3'}/></div>
+        <div style={D3ContainerStyle}><DownStemNote currentNote={props.currentNote} note={'D3'}/></div>
 
-        <div style={C3ContainerStyle}><UpStemNote /></div>
-        <div style={B2ContainerStyle}><UpStemNote /></div>
-        <div style={A2ContainerStyle}><UpStemNote /></div>
-        <div style={G2ContainerStyle}><UpStemNote /></div>
-        <div style={F2ContainerStyle}><UpStemNote /></div>
+        <div style={C3ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'C3'}/></div>
+        <div style={B2ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'B2'}/></div>
+        <div style={A2ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'A2'}/></div>
+        <div style={G2ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'G2'}/></div>
+        <div style={F2ContainerStyle}><UpStemNote currentNote={props.currentNote} note={'F2'}/></div>
       </div>
     </div>
   )

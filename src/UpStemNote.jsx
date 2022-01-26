@@ -5,12 +5,21 @@ const upstemStyle = {
   height: '130px'
 }
 
-const UpStemNote = () => {
+const upstemStyleHidden = {
+  height: '130px',
+  opacity: '0'
+}
+
+
+const UpStemNote = (props) => {
+
+  const upstemIsSelected = (props.currentNote === props.note) ? upstemStyle : upstemStyleHidden
+
   return (
     <span
       className="upstemContainer">
       <img
-        style={upstemStyle}
+        style={upstemIsSelected}
         src={upstem}>
       </img>
     </span>

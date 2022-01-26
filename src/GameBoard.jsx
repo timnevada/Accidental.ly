@@ -32,11 +32,11 @@ const GameBoard = () => {
       <div
         className='grandstaffContainer'
         style={grandstaffContainerStyle}>
-        <GrandStaff />
+        <GrandStaff currentNote={currentNote}/>
       </div>
       <div className='submissionContainer'
               style={submissionContainerStyle}>
-        <Submission />
+        <Submission setCurrentNote={setCurrentNote}/>
       </div>
     </div>
   )

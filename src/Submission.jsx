@@ -8,12 +8,13 @@ const submitButtonStyle = {
   padding: '10px'
 }
 
-const Submission = () => {
+const Submission = (props) => {
   const [noteSubmission, setNoteSubmission] = useState('');
 
   const submitNote = (event) => {
     event.preventDefault();
     console.log(noteSubmission);
+    props.setCurrentNote(noteSubmission);
     setNoteSubmission('');
   }
 

@@ -18,7 +18,7 @@ const App = () => {
         className="headerBarContainer"
         style={headerBarContainerStyle}>
         <h1>
-          Accidental.ly
+          Accidental.ly (F2 - G5)
         </h1>
       </div>
       {/* <div
