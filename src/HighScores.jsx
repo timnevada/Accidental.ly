@@ -1,10 +1,19 @@
 import './scroll.css';
+import Score from './Score.jsx';
 
-const HighScores = () => {
+const HighScores = (props) => {
+
+  let scoresArray = props.highScores.data ? props.highScores.data : []
   return (
-    <div>
-      <div id="scroll-container">
-        <div id="scroll-text">#1: TVN #2: TN #3: TV</div>
+    <div id="scroll-container">
+      <div id="scroll-text">
+        {scoresArray.map(item =>
+          <Score
+            key={item.id}
+            name={item.name}
+            correct={item.correct}
+            incorrect={item.incorrect}/>
+        )}
       </div>
     </div>
   )

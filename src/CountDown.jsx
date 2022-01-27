@@ -26,7 +26,7 @@ const timesUpContainerStyle = {
 }
 
 
-const CountDown = ( props, { hours = 0, minutes = 0, seconds = 1 } ) => {
+const CountDown = ( props, { hours = 0, minutes = 0, seconds = 15 } ) => {
   const [over, setOver] = useState(false);
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
 
