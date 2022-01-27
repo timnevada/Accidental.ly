@@ -1,32 +1,36 @@
-import './App.css';
+import { Provider } from './context/State.js';
 import GameBoard from './GameBoard.jsx';
+import HighScores from './HighScores.jsx';
 
 const headerBarContainerStyle = {
+  backgroundColor: 'black',
+  color: 'white',
   display: 'flex',
-  justifyContent: 'space-around'
+  flexDirection: 'column',
+  marginBottom: '30px',
+  padding: '15px'
 }
 
-const gameboardContainerStyle = {
+const logoStyle = {
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'center'
 }
+
+
 
 const App = () => {
   return (
-    <div className="App">
-      <div
-        className="headerBarContainer"
-        style={headerBarContainerStyle}>
-        <h1>
-          Accidental.ly (F2 - G5)
-        </h1>
+    <Provider>
+      <div className="App">
+        <div
+          className="headerBarContainer"
+          style={headerBarContainerStyle}>
+          <h1 style={logoStyle}>accidental.ly</h1>
+          <HighScores />
+        </div>
+          <GameBoard />
       </div>
-      {/* <div
-        className="gameboardContainer"
-        style={gameboardContainerStyle}> */}
-        <GameBoard />
-      {/* </div> */}
-    </div>
+    </Provider>
   );
 }
 
