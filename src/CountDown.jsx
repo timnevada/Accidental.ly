@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Context } from './context/State.js';
+import React, { useState, useEffect } from 'react';
 
 const countDownContainerStyle = {
   display: 'flex',
@@ -26,16 +25,17 @@ const timesUpContainerStyle = {
   justifyContent: 'center',
 }
 
-const CountDown = ({ hours = 0, minutes = 0, seconds = 0 }) => {
-  const [paused, setPaused] = useState(true);
+
+const CountDown = ( props, { hours = 0, minutes = 0, seconds = 1 } ) => {
   const [over, setOver] = useState(false);
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
-  const { resetCount, timerPaused, toggleTimer } = useContext(Context);
 
   const tick = () => {
-    if (timerPaused || over) return;
-    if (h === 0 && m === 0 && s === 0) setOver(true);
-    else if (m === 0 && s === 0) {
+    if (props.isPaused || over) return;
+    if (h === 0 && m === 0 && s === 0) {
+      setOver(true)
+      submitScore();
+    } else if (m === 0 && s === 0) {
       setTime([h - 1, 59, 59]);
     } else if (s === 0) {
       setTime([h, m - 1, 59]);
@@ -46,10 +46,19 @@ const CountDown = ({ hours = 0, minutes = 0, seconds = 0 }) => {
 
   const reset = () => {
     setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
-    toggleTimer(true);
+    props.toggle(true);
     setOver(false);
-    resetCount(0);
+    props.updateCorrect(0);
+    props.updateIncorrect(0);
   };
+
+  const submitScore = () => {
+    console.log('submitting score...');
+    if (props.username) {
+      props.postScore(props.username, props.correctScore, props.incorrectScore);
+      console.log('score submitted?');
+    }
+  }
 
   useEffect(() => {
     const timerID = setInterval(() => tick(), 1000);
@@ -71,7 +80,8 @@ const CountDown = ({ hours = 0, minutes = 0, seconds = 0 }) => {
       </div>
       <div
         className="timesUpContainer"
-        style={timesUpContainerStyle}>{over ? "Time's up!" : ''}
+        style={timesUpContainerStyle}>
+          {over ? "Time's up!" : ''}
       </div>
 
       <div

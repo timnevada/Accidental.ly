@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { Context } from './context/State.js';
+import React, { useState } from 'react';
 import GrandStaff from './GrandStaff.jsx';
 import ImageModal from './ImageModal.jsx';
 import CountDown from './CountDown.jsx';
@@ -37,20 +36,6 @@ const scoreBoardModuleStyle = {
   padding: '10px'
 }
 
-/*
-const correctCountStyle = {
-  padding: '10px'
-}
-
-const incorrectCountStyle = {
-  padding: '10px'
-}
-
-const inputFormStyle = {
-  margin: '10px'
-}
-*/
-
 const inputFieldStyle = {
   padding: '10px'
 }
@@ -75,27 +60,26 @@ const randomizeNote = (allNotesArray) => {
   return allNotesArray[Math.floor(Math.random() * allNotesArray.length)];
 }
 
-const GameBoard = () => {
+const GameBoard = (props) => {
   const [playerName, setPlayerName] = useState('');
   const [savedName, savePlayerName] = useState('');
+  const [timerPaused, toggleTimer] = useState(true);
   const [currentNote, setCurrentNote] = useState('C5');
+  const [correctCount, updateCorrectCount] = useState(0);
+  const [incorrectCount, updateIncorrectCount] = useState(0);
   const [noteSubmission, setNoteSubmission] = useState('');
   const [greetingVisibility, showGreeting] = useState(false);
   const [displayImageModal, setDisplayImageModal] = useState(false);
-
-  const {
-    resetCount, toggleTimer,
-    correctCount, incorrectCount,
-    updateCorrectCount, updateIncorrectCount
-  } = useContext(Context);
 
   const submitNote = (event) => {
     event.preventDefault();
     toggleTimer(false);
     if (currentNote.toLowerCase().includes(noteSubmission) || currentNote.includes(noteSubmission)) {
-      updateCorrectCount(correctCount + 1)
+      let oldCorrectCount = correctCount
+      updateCorrectCount(oldCorrectCount + 1)
     } else {
-      updateIncorrectCount(incorrectCount + 1)
+      let oldIncorrectCount = incorrectCount
+      updateIncorrectCount(oldIncorrectCount + 1)
     }
     setCurrentNote(randomizeNote(currentKey));
     setNoteSubmission('');
@@ -122,7 +106,7 @@ const GameBoard = () => {
   }
 
   const greeting = ('Hello ' + savedName + '!');
-  const greetingStyle = savedName ? greetingStyleVis : greetingStyleInvis
+  const greetingStyle = greetingVisibility ? greetingStyleVis : greetingStyleInvis
 
   return (
     <div
@@ -140,7 +124,16 @@ const GameBoard = () => {
       <div
         className="scoreboardAndSubmissionContainer"
         style={scoreboardAndSubmissionContainerStyle}>
-          <CountDown seconds={30}/>
+          <CountDown
+            username={savedName}
+            correctScore={correctCount}
+            incorrectScore={incorrectCount}
+            postScore={props.postNewScore}
+            isPaused={timerPaused}
+            toggle={toggleTimer}
+            updateCorrect={updateCorrectCount}
+            updateIncorrect={updateIncorrectCount}
+            seconds={30}/>
           <div
             className="scoreboardLabelsContainer"
             style={scoreboardContainerStyle}>

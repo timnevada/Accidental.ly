@@ -1,16 +1,22 @@
 var mysql = require('mysql');
-var db = mysql.createdb({
+var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : ``,
-  database : ''
+  database : 'accidentally'
 });
 
-db.connect();
+connection.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected to MySQL!');
+  }
+});
 
 const getAllScores = function (callback) {
   var sqlString = 'select * from scores';
-  db.query(sqlString, function (error, results, fields) {
+  connection.query(sqlString, function (error, results, fields) {
     if (error) {
       callback(error);
     } else {
@@ -21,13 +27,14 @@ const getAllScores = function (callback) {
 }
 
 const postScore = function (values, callback) {
-  var sqlString = 'insert into scores set name=?, correct=? incorrect=?';
-  db.query(sqlString, values, function (error, results, fields) {
+  var sqlString = 'insert into scores set name=?, correct=?, incorrect=?';
+  connection.query(sqlString, values, function (error, results, fields) {
     if(error) {
+      console.log(values);
       callback(error);
     } else {
-      callback(null, results);
       console.log(results);
+      callback(null, results);
     }
   })
 }
