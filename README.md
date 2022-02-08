@@ -3,7 +3,7 @@
 Accidental.ly is a minigame designed to help music students practice reading sheet music. Users will have 15 seconds to identify as many notes as possible placed on a grand staff. 
 
 <p align="center">
-  <img width="900" src="https://media.giphy.com/media/SnDmTb4FkmIrslGlrk/giphy.gif" alt="accidental.ly">
+  <img width="500" src="https://media.giphy.com/media/SnDmTb4FkmIrslGlrk/giphy.gif" alt="accidental.ly">
 </p>
 
 ### Getting Started
